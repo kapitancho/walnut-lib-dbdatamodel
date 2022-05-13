@@ -2,6 +2,10 @@
 
 namespace Walnut\Lib\DbDataModel;
 
+use ReflectionClass;
+use ReflectionProperty;
+use ReflectionAttribute;
+use ReflectionException;
 use Walnut\Lib\DbDataModel\Attribute\CrossTable;
 use Walnut\Lib\DbDataModel\Attribute\Fields;
 use Walnut\Lib\DbDataModel\Attribute\GroupField;
@@ -20,12 +24,12 @@ final class DataModelBuilder {
 
 	/**
 	 * @template T of object
-	 * @param \ReflectionClass|\ReflectionProperty $r
+	 * @param ReflectionClass|ReflectionProperty $r
 	 * @param class-string<T> $className
 	 * @return ?T
 	 */
 	private function getAttribute(
-		\ReflectionClass|\ReflectionProperty $r,
+		ReflectionClass|ReflectionProperty $r,
 		string $className
 	) {
 		/**
@@ -36,12 +40,12 @@ final class DataModelBuilder {
 
 	/**
 	 * @template T
-	 * @param \ReflectionClass|\ReflectionProperty $r
+	 * @param ReflectionClass|ReflectionProperty $r
 	 * @param class-string<T> $className
 	 * @return array<T>
 	 */
-	private function getAttributes(\ReflectionClass|\ReflectionProperty $r, string $className): array {
-		return array_map(static fn(\ReflectionAttribute $reflectionAttribute) =>
+	private function getAttributes(ReflectionClass|ReflectionProperty $r, string $className): array {
+		return array_map(static fn(ReflectionAttribute $reflectionAttribute) =>
 			$reflectionAttribute->newInstance(), $r->getAttributes($className));
 	}
 
@@ -52,7 +56,7 @@ final class DataModelBuilder {
 	 */
 	public function build(string $modelClass): DataModel {
 		try {
-			$r = new \ReflectionClass($modelClass);
+			$r = new ReflectionClass($modelClass);
 			$modelRoot = $this->getAttribute($r, ModelRoot::class) ??
 				throw new InvalidDataModel("The model root is missing");
 
@@ -75,7 +79,7 @@ final class DataModelBuilder {
 			}
 
 			return new DataModel($modelRoot, $dataParts);
-		} catch (\ReflectionException $ex) {
+		} catch (ReflectionException $ex) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidDataModel("Unexpected reflection problem:" . $ex);
 			// @codeCoverageIgnoreEnd

@@ -8,8 +8,8 @@ namespace Walnut\Lib\DbDataModel\Attribute;
 #[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_PROPERTY)]
 final class ListOf {
 	public function __construct(
-		public /*readonly*/ string $fieldName,
-		public /*readonly*/ string $targetName,
-		public /*readonly*/ ?string $sourceField = null
+		public readonly string $fieldName,
+		public readonly string $targetName,
+		public readonly ?string $sourceField = null
 	) {}
 }

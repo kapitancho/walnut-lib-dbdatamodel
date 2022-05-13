@@ -10,7 +10,7 @@ final class Fields {
 	/**
 	 * @var string[]
 	 */
-	public /*readonly*/ array $fieldNames;
+	public readonly array $fieldNames;
 
 	public function __construct(string ...$fieldNames) {
 		$this->fieldNames = $fieldNames;

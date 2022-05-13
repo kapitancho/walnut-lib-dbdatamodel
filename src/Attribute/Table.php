@@ -8,6 +8,6 @@ namespace Walnut\Lib\DbDataModel\Attribute;
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
 final class Table {
 	public function __construct(
-		public /*readonly*/ string $tableName
+		public readonly string $tableName
 	) {}
 }

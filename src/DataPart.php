@@ -29,14 +29,14 @@ final class DataPart {
 	 * @param ListOf[] $listOfFields
 	 */
 	public function __construct(
-		public /*readonly*/ Table $table,
-		public /*readonly*/ Fields $fields,
-		public /*readonly*/ KeyField $keyField,
-		public /*readonly*/ ?ParentField $parentField,
-		public /*readonly*/ ?CrossTable $crossTable,
-		public /*readonly*/ ?SortField $sortField,
-		public /*readonly*/ ?GroupField $groupField,
-		public /*readonly*/ array $oneOfFields,
-		public /*readonly*/ array $listOfFields
+		public readonly Table $table,
+		public readonly Fields $fields,
+		public readonly KeyField $keyField,
+		public readonly ?ParentField $parentField,
+		public readonly ?CrossTable $crossTable,
+		public readonly ?SortField $sortField,
+		public readonly ?GroupField $groupField,
+		public readonly array $oneOfFields,
+		public readonly array $listOfFields
 	) {}
 }

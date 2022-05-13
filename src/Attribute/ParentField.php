@@ -8,6 +8,6 @@ namespace Walnut\Lib\DbDataModel\Attribute;
 #[\Attribute(\Attribute::TARGET_PROPERTY)]
 final class ParentField {
 	public function __construct(
-		public /*readonly*/ string $name
+		public readonly string $name
 	) {}
 }

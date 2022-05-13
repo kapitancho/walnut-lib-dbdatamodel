@@ -8,6 +8,6 @@ namespace Walnut\Lib\DbDataModel\Attribute;
 #[\Attribute(\Attribute::TARGET_CLASS)]
 final class ModelRoot {
 	public function __construct(
-		public /*readonly*/ string $modelRoot
+		public readonly string $modelRoot
 	) {}
 }

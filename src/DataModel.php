@@ -14,8 +14,8 @@ final class DataModel {
 	 * @param array<string, DataPart> $parts
 	 */
 	public function __construct(
-		public /*readonly*/ ModelRoot $modelRoot,
-		public /*readonly*/ array $parts
+		public readonly ModelRoot $modelRoot,
+		public readonly array $parts
 	) {}
 
 	public function part(string $modelName): DataPart {
